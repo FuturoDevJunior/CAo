@@ -1,0 +1,15 @@
+id: bykea-ssrf
+info:
+  name: Verificação de SSRF da Bykea
+  severity: high
+  author: equipe-security
+  tags: ssrf,bykea
+  description: Detecta vulnerabilidades SSRF nos endpoints da Bykea
+requests:
+  - method: GET
+    path:
+      - '{{BaseURL}}/api/v1/test?url=http://example.com'
+    matchers:
+      - type: word
+        words:
+          - '169.254.169.254'

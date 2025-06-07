@@ -1,0 +1,15 @@
+id: bykea-idor
+info:
+  name: Verificação de IDOR da Bykea
+  severity: medium
+  author: equipe-security
+  tags: idor,bykea
+  description: Detecta vulnerabilidades IDOR nos endpoints da Bykea
+requests:
+  - method: GET
+    path:
+      - '{{BaseURL}}/api/v1/user/1'
+    matchers:
+      - type: word
+        words:
+          - 'email'
